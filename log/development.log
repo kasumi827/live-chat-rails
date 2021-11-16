@@ -1,0 +1,593 @@
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ (erb):38:in `migration_template'
+Started POST "/auth" for ::1 at 2021-11-09 19:32:33 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.4.1) lib/active_record/migration.rb:586:in `check_pending!'
+activerecord (6.0.4.1) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.4.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseTokenAuthCreateUsers (20211104132308)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar DEFAULT 'email' NOT NULL, "uid" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "name" varchar, "email" varchar, "tokens" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211104132308"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-10 04:06:15.150781"], ["updated_at", "2021-11-10 04:06:15.150781"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/auth" for ::1 at 2021-11-10 13:07:29 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Auth::RegistrationsController):
+  
+actionpack (6.0.4.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.4.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.4.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.4.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.4.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.4.1) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (6.0.4.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.4.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.4.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.4.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.4.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.4.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.4.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth" for ::1 at 2021-11-10 13:14:24 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"kasumi827", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["uid", "kasumiuchan827@gmail.com"], ["encrypted_password", "$2a$12$JrmWvD64Fx6PRgDx1cY9p.enLL7C9Pnu0k5m.mUR4BfwIW4SQANnG"], ["name", "kasumi827"], ["email", "kasumiuchan827@gmail.com"], ["created_at", "2021-11-10 04:14:24.575508"], ["updated_at", "2021-11-10 04:14:24.575508"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"2qMagNi0cwXQbbsADIc3kg\":{\"token\":\"$2a$10$8f0dfgwY3Bx4Evkb1NbSA.wnuUf/MJbEj3R2K5m1m48NU9mdKXa2O\",\"expiry\":1637727264}}"], ["updated_at", "2021-11-10 04:14:24.650085"], ["id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"2qMagNi0cwXQbbsADIc3kg\":{\"token\":\"$2a$10$rUmRpIMQG.6Zyg71pqFAj.1zkwMByo427rEl8jqHijcQUYHDnNff.\",\"expiry\":1637727264,\"last_token\":\"$2a$10$8f0dfgwY3Bx4Evkb1NbSA.wnuUf/MJbEj3R2K5m1m48NU9mdKXa2O\",\"updated_at\":\"2021-11-10T04:14:24Z\"}}"], ["updated_at", "2021-11-10 04:14:24.716793"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 509ms (Views: 0.2ms | ActiveRecord: 10.2ms | Allocations: 37930)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-11 03:34:55 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  Parameters: {"name"=>"kasumi827", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Completed 404 Not Found in 18ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 7104)
+
+
+Started POST "/auth" for ::1 at 2021-11-11 03:36:23 +0900
+Processing by Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"kasumi827", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 228ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 11406)
+
+
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMessages (20211110183941)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_user_id" ON "messages" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211110183941"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/auth" for ::1 at 2021-11-11 11:58:05 +0900
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827kasumi827", "email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 251ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 17693)
+
+
+Started POST "/auth" for ::1 at 2021-11-11 11:58:32 +0900
+Processing by Auth::RegistrationsController#create as */*
+  Parameters: {"name"=>"kasumi827kasumi827", "email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["uid", "u-chan827@i.softbank.jp"], ["encrypted_password", "$2a$12$qji6mPvSS6pKsZ5JqTuMQu16L5H/cHQT05CXeYQj/QitgWS.OA1Sa"], ["name", "kasumi827kasumi827"], ["email", "u-chan827@i.softbank.jp"], ["created_at", "2021-11-11 02:58:32.607777"], ["updated_at", "2021-11-11 02:58:32.607777"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"expiry\":1637809112}}"], ["updated_at", "2021-11-11 02:58:32.670596"], ["id", 2]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"}}"], ["updated_at", "2021-11-11 02:58:32.746453"], ["id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 364ms (Views: 0.1ms | ActiveRecord: 5.9ms | Allocations: 17909)
+
+
+Started GET "/" for ::1 at 2021-11-11 12:56:42 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.7.0/gems/railties-6.0.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.7.0/gems/railties-6.0.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.6ms | Allocations: 404)
+Completed 200 OK in 24ms (Views: 17.6ms | ActiveRecord: 0.0ms | Allocations: 2225)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-11-11 12:56:42 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.10) lib/puma/configuration.rb:228:in `call'
+puma (4.3.10) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.10) lib/puma/server.rb:472:in `process_client'
+puma (4.3.10) lib/puma/server.rb:328:in `block in run'
+puma (4.3.10) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/messages" for ::1 at 2021-11-11 13:05:47 +0900
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as */*
+  Parameters: {"name"=>"kasumi827kasumi827", "email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:4:in `map'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2302)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Create (1.0ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["content", "0番目のメッセージです！"], ["created_at", "2021-11-11 04:08:17.817223"], ["updated_at", "2021-11-11 04:08:17.817223"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["content", "1番目のメッセージです！"], ["created_at", "2021-11-11 04:08:17.829643"], ["updated_at", "2021-11-11 04:08:17.829643"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["content", "2番目のメッセージです！"], ["created_at", "2021-11-11 04:08:17.839909"], ["updated_at", "2021-11-11 04:08:17.839909"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/messages" for ::1 at 2021-11-11 13:08:46 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MessagesController#index as */*
+  Parameters: {"name"=>"kasumi827kasumi827", "email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:4:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:7:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:7:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:7:in `block in index'
+Completed 200 OK in 41ms (Views: 0.5ms | ActiveRecord: 2.2ms | Allocations: 13276)
+
+
+Started GET "/messages" for ::1 at 2021-11-11 14:13:06 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MessagesController#index as */*
+  Parameters: {"name"=>"kasumi827kasumi827", "email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 14ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 6346)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-11 14:14:02 +0900
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$AUp778TOQPiAYJtoG5/bA.A8TRLHDbAwN.y2DGFeHo.YwOCvjqj..\",\"expiry\":1637817242}}"], ["updated_at", "2021-11-11 05:14:02.799096"], ["id", 2]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"expiry\":1637817242,\"last_token\":\"$2a$10$AUp778TOQPiAYJtoG5/bA.A8TRLHDbAwN.y2DGFeHo.YwOCvjqj..\",\"updated_at\":\"2021-11-11T05:14:02Z\"}}"], ["updated_at", "2021-11-11 05:14:02.865128"], ["id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 354ms (Views: 0.2ms | ActiveRecord: 5.4ms | Allocations: 18560)
+
+
+Started GET "/messages" for ::1 at 2021-11-11 16:23:00 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MessagesController#index as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"}}"], ["updated_at", "2021-11-11 07:23:00.552083"], ["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 135ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 15695)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLikes (20211111072348)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "likes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "message_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_likes_on_user_id" ON "likes" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_likes_on_message_id" ON "likes" ("message_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20211111072348"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/auth/sign_in" for ::1 at 2021-11-11 16:42:39 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 249ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 13681)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-11 16:42:47 +0900
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MMA2Z1Bc1mIv/WcFFKeHH.53PZRxk3qHwH1GQc7bWmdoglF.IvVwC\",\"expiry\":1637826167}}"], ["updated_at", "2021-11-11 07:42:47.998546"], ["id", 2]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"expiry\":1637826168,\"last_token\":\"$2a$10$MMA2Z1Bc1mIv/WcFFKeHH.53PZRxk3qHwH1GQc7bWmdoglF.IvVwC\",\"updated_at\":\"2021-11-11T07:42:48Z\"}}"], ["updated_at", "2021-11-11 07:42:48.066780"], ["id", 2]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 342ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 13566)
+
+
+Started POST "/messages/1/likes" for ::1 at 2021-11-11 16:45:13 +0900
+Processing by LikesController#create as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Create (1.9ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "message_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["message_id", 1], ["created_at", "2021-11-11 07:45:13.441969"], ["updated_at", "2021-11-11 07:45:13.441969"]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"}}"], ["updated_at", "2021-11-11 07:45:13.504457"], ["id", 2]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 162ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 21694)
+
+
+Started POST "/messages/99999/likes" for ::1 at 2021-11-11 16:45:37 +0900
+Processing by LikesController#create as */*
+  Parameters: {"id"=>"99999"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 54ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1304)
+
+
+Started POST "/messages/2/likes" for ::1 at 2021-11-11 16:46:13 +0900
+Processing by LikesController#create as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 54ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1308)
+
+
+Started POST "/messages/2/likes" for ::1 at 2021-11-11 16:47:28 +0900
+Processing by LikesController#create as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 53ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1293)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-11 16:47:40 +0900
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"},\"l2EtBAo9DBLDkefJxVE60w\":{\"token\":\"$2a$10$hjQZRquY4ZXvEOGt8a1hb.qDSg.04Lrf/9QSgsvD/beHUnC.1nTqy\",\"expiry\":1637826460}}"], ["updated_at", "2021-11-11 07:47:40.715009"], ["id", 2]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"},\"l2EtBAo9DBLDkefJxVE60w\":{\"token\":\"$2a$10$ATeKU5LY3sTgApYe8ntOGuqHnODXHcsL8wciKqug.ONS9NYO5Pqt2\",\"expiry\":1637826460,\"last_token\":\"$2a$10$hjQZRquY4ZXvEOGt8a1hb.qDSg.04Lrf/9QSgsvD/beHUnC.1nTqy\",\"updated_at\":\"2021-11-11T07:47:40Z\"}}"], ["updated_at", "2021-11-11 07:47:40.775135"], ["id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 324ms (Views: 0.1ms | ActiveRecord: 3.1ms | Allocations: 12943)
+
+
+Started POST "/messages/2/likes" for ::1 at 2021-11-11 16:48:20 +0900
+Processing by LikesController#create as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "u-chan827@i.softbank.jp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mMessage Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "message_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["message_id", 2], ["created_at", "2021-11-11 07:48:20.929185"], ["updated_at", "2021-11-11 07:48:20.929185"]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"},\"l2EtBAo9DBLDkefJxVE60w\":{\"token\":\"$2a$10$PXiE4yfUiSd4BK/NZLDS/uaaT8jfoEA.nk/eSBGrpmjfyY2NjNzsG\",\"expiry\":1637826500,\"last_token\":\"$2a$10$ATeKU5LY3sTgApYe8ntOGuqHnODXHcsL8wciKqug.ONS9NYO5Pqt2\",\"updated_at\":\"2021-11-11T07:48:20Z\"}}"], ["updated_at", "2021-11-11 07:48:20.988344"], ["id", 2]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 119ms (Views: 0.1ms | ActiveRecord: 4.0ms | Allocations: 12786)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-12 08:06:22 +0900
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"u-chan827@i.softbank.jp", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "u-chan827@i.softbank.jp"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"},\"l2EtBAo9DBLDkefJxVE60w\":{\"token\":\"$2a$10$PXiE4yfUiSd4BK/NZLDS/uaaT8jfoEA.nk/eSBGrpmjfyY2NjNzsG\",\"expiry\":1637826500,\"last_token\":\"$2a$10$ATeKU5LY3sTgApYe8ntOGuqHnODXHcsL8wciKqug.ONS9NYO5Pqt2\",\"updated_at\":\"2021-11-11T07:48:20Z\"},\"HPkkzK9iAB_drENbzPkxoQ\":{\"token\":\"$2a$10$qUX1eL6eMzGMxk1P6cKt/O8LsCGKyk6RWGs2LPrNd1yhiVzOCm2Qu\",\"expiry\":1637881583}}"], ["updated_at", "2021-11-11 23:06:23.054320"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"EDyYTraar4VB2cy35FVALA\":{\"token\":\"$2a$10$HKNDB9fwdg6iITim3G74O.JVDojEV8Vx5qXuEoniqN3dECUB/Jmq6\",\"expiry\":1637809112,\"last_token\":\"$2a$10$AludIZkfHd1QS3H9atgs9.31QsZFu.6DABlF34KMLvxI58Kh5xeXG\",\"updated_at\":\"2021-11-11T02:58:32Z\"},\"T0ePAVFx1s-pStY1TVuLsQ\":{\"token\":\"$2a$10$E00S2uCKAhgr3H/s04wrzO5tmRVmWy5bsuGswXXk90263GIIwIEcq\",\"expiry\":1637824980,\"last_token\":\"$2a$10$TuvJhdPZCsWgdLKaLwugmuLCk/v2yd4Zh.lZuYzosSl8brPoIAGXO\",\"updated_at\":\"2021-11-11T07:23:00Z\"},\"aoBpCczcv8OyxeiWKfmJxw\":{\"token\":\"$2a$10$MeJd81vi7hm5pKW3V6U8FeQyF5o5F8gU/jGkXTOfHY/kwS2X3w5ni\",\"expiry\":1637826313,\"last_token\":\"$2a$10$FjOhI5sKgz5fvTzK2a6ATueuMR6esXUQbvouhS5cmVFxU3lGy295m\",\"updated_at\":\"2021-11-11T07:45:13Z\"},\"l2EtBAo9DBLDkefJxVE60w\":{\"token\":\"$2a$10$PXiE4yfUiSd4BK/NZLDS/uaaT8jfoEA.nk/eSBGrpmjfyY2NjNzsG\",\"expiry\":1637826500,\"last_token\":\"$2a$10$ATeKU5LY3sTgApYe8ntOGuqHnODXHcsL8wciKqug.ONS9NYO5Pqt2\",\"updated_at\":\"2021-11-11T07:48:20Z\"},\"HPkkzK9iAB_drENbzPkxoQ\":{\"token\":\"$2a$10$cEi9pNGW/cZg76zHnJKSo.FNDYpMoBqpWFja2SbhHO7a5lRq7wElC\",\"expiry\":1637881583,\"last_token\":\"$2a$10$qUX1eL6eMzGMxk1P6cKt/O8LsCGKyk6RWGs2LPrNd1yhiVzOCm2Qu\",\"updated_at\":\"2021-11-11T23:06:23Z\"}}"], ["updated_at", "2021-11-11 23:06:23.118612"], ["id", 2]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 360ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 19831)
+
+
+Started DELETE "/likes/1" for ::1 at 2021-11-12 08:08:19 +0900
+Processing by LikesController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:18:in `destroy'
+Completed 200 OK in 37ms (Views: 5.3ms | ActiveRecord: 3.8ms | Allocations: 8228)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 13:12:03 +0900
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 301ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 27016)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 13:21:49 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 217ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 5719)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 14:09:21 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 215ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 5717)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-16 18:59:34 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+Completed 401 Unauthorized in 259ms (Views: 0.6ms | ActiveRecord: 1.7ms | Allocations: 2265)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-16 18:59:46 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+Completed 401 Unauthorized in 214ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1624)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 18:59:55 +0900
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 231ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 5704)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 19:19:04 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+[31mUnpermitted parameter: :registration[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 227ms (Views: 0.9ms | ActiveRecord: 0.9ms | Allocations: 5707)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 19:22:47 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 227ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 11053)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 19:22:59 +0900
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 218ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 5645)
+
+
+Started POST "/auth" for ::1 at 2021-11-16 19:38:46 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 422 Unprocessable Entity in 221ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5230)
+
+
