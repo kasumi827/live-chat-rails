@@ -591,3 +591,1634 @@ Processing by Auth::RegistrationsController#create as HTML
 Completed 422 Unprocessable Entity in 221ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5230)
 
 
+Started POST "/auth" for ::1 at 2021-11-17 14:07:40 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["uid", "kasumiuchan827827@gmail.com"], ["encrypted_password", "$2a$12$S22TwVqUgqo8AepvlaVRNOzzdGPCe6ClYX3FbKDRBSG4ZX66GE0Uu"], ["name", "センゴクカスミ"], ["email", "kasumiuchan827827@gmail.com"], ["created_at", "2021-11-17 05:07:40.777560"], ["updated_at", "2021-11-17 05:07:40.777560"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"expiry\":1638335260}}"], ["updated_at", "2021-11-17 05:07:40.844286"], ["id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$DjucCWdnu5sjdbhw7.xNZ.2eKmZfSq8OhlvsUNlIjbMBOEat.0vNm\",\"expiry\":1638335260,\"last_token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"updated_at\":\"2021-11-17T05:07:40Z\"}}"], ["updated_at", "2021-11-17 05:07:40.907916"], ["id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 390ms (Views: 0.2ms | ActiveRecord: 7.3ms | Allocations: 30259)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:08:46 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$DjucCWdnu5sjdbhw7.xNZ.2eKmZfSq8OhlvsUNlIjbMBOEat.0vNm\",\"expiry\":1638335260,\"last_token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"updated_at\":\"2021-11-17T05:07:40Z\"},\"4Qoo8z4OlZHCFvbCzVfazA\":{\"token\":\"$2a$10$ZWTLmPjswXlw9XgAzaOHoOqnfcZ9SctIeWZzSixFi9MlVl843M9jS\",\"expiry\":1638335326}}"], ["updated_at", "2021-11-17 05:08:46.840104"], ["id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$DjucCWdnu5sjdbhw7.xNZ.2eKmZfSq8OhlvsUNlIjbMBOEat.0vNm\",\"expiry\":1638335260,\"last_token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"updated_at\":\"2021-11-17T05:07:40Z\"},\"4Qoo8z4OlZHCFvbCzVfazA\":{\"token\":\"$2a$10$azwEZmT5g9Nkhs5FZB0KmOMsUSmEYDLEAMOw/VgP.RHscFc9v9FaW\",\"expiry\":1638335326,\"last_token\":\"$2a$10$ZWTLmPjswXlw9XgAzaOHoOqnfcZ9SctIeWZzSixFi9MlVl843M9jS\",\"updated_at\":\"2021-11-17T05:08:46Z\"}}"], ["updated_at", "2021-11-17 05:08:46.907718"], ["id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 338ms (Views: 0.1ms | ActiveRecord: 3.3ms | Allocations: 13204)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:18:47 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$DjucCWdnu5sjdbhw7.xNZ.2eKmZfSq8OhlvsUNlIjbMBOEat.0vNm\",\"expiry\":1638335260,\"last_token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"updated_at\":\"2021-11-17T05:07:40Z\"},\"4Qoo8z4OlZHCFvbCzVfazA\":{\"token\":\"$2a$10$azwEZmT5g9Nkhs5FZB0KmOMsUSmEYDLEAMOw/VgP.RHscFc9v9FaW\",\"expiry\":1638335326,\"last_token\":\"$2a$10$ZWTLmPjswXlw9XgAzaOHoOqnfcZ9SctIeWZzSixFi9MlVl843M9jS\",\"updated_at\":\"2021-11-17T05:08:46Z\"},\"8ZesLW7DyLLWTXsUXtqGeA\":{\"token\":\"$2a$10$DNrB4lykF4vXN/ItRc4QA.T5dQ7JarjKVG6UU/h1cwCswwIUKL9AC\",\"expiry\":1638335927}}"], ["updated_at", "2021-11-17 05:18:47.865548"], ["id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"1PjbFtG5AqYBQXz0VWEZUA\":{\"token\":\"$2a$10$DjucCWdnu5sjdbhw7.xNZ.2eKmZfSq8OhlvsUNlIjbMBOEat.0vNm\",\"expiry\":1638335260,\"last_token\":\"$2a$10$pfH7Hm5BDcFC4k2H7h2crO9u854al3GnGjcTxRxAvIUfpyEaYL.Ka\",\"updated_at\":\"2021-11-17T05:07:40Z\"},\"4Qoo8z4OlZHCFvbCzVfazA\":{\"token\":\"$2a$10$azwEZmT5g9Nkhs5FZB0KmOMsUSmEYDLEAMOw/VgP.RHscFc9v9FaW\",\"expiry\":1638335326,\"last_token\":\"$2a$10$ZWTLmPjswXlw9XgAzaOHoOqnfcZ9SctIeWZzSixFi9MlVl843M9jS\",\"updated_at\":\"2021-11-17T05:08:46Z\"},\"8ZesLW7DyLLWTXsUXtqGeA\":{\"token\":\"$2a$10$CIcjVvE85o5YSqYCv4SnoeVKxoKAstn0C8MBF76RjLQyFzL6X4mpC\",\"expiry\":1638335927,\"last_token\":\"$2a$10$DNrB4lykF4vXN/ItRc4QA.T5dQ7JarjKVG6UU/h1cwCswwIUKL9AC\",\"updated_at\":\"2021-11-17T05:18:47Z\"}}"], ["updated_at", "2021-11-17 05:18:47.926149"], ["id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 328ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 13017)
+
+
+Started POST "/auth" for ::1 at 2021-11-17 14:20:11 +0900
+Processing by Auth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"センゴクカスミ", "email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "registration"=>{"name"=>"センゴクカスミ", "email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["encrypted_password", "$2a$12$7UdmD4utiMuZgK5GglIq..jfcLkvaymvq6Ubxl4IYsOqJiGphozzO"], ["name", "センゴクカスミ"], ["email", "kasumiuchan827827827@gmail.com"], ["created_at", "2021-11-17 05:20:11.350652"], ["updated_at", "2021-11-17 05:20:11.350652"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"-JRxcodtKU6w0-ttbxK0GA\":{\"token\":\"$2a$10$l9xVM99G6HBdPZ1uxlOfZ.3bnDSIiHrRvsDPwIAkzQxQubEsy.IQi\",\"expiry\":1638336011}}"], ["updated_at", "2021-11-17 05:20:11.407819"], ["id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"-JRxcodtKU6w0-ttbxK0GA\":{\"token\":\"$2a$10$H33Q467REJfTpFJOa.//yO4G.hIWy.5.eoXCVzbKgX1vgAMwz3q8u\",\"expiry\":1638336011,\"last_token\":\"$2a$10$l9xVM99G6HBdPZ1uxlOfZ.3bnDSIiHrRvsDPwIAkzQxQubEsy.IQi\",\"updated_at\":\"2021-11-17T05:20:11Z\"}}"], ["updated_at", "2021-11-17 05:20:11.467073"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 336ms (Views: 0.2ms | ActiveRecord: 7.3ms | Allocations: 17033)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:25:18 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", nil], ["updated_at", "2021-11-17 05:25:18.812032"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 75ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 7062)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:27:26 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "null"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1188)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:27:27 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "null"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1184)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:27:39 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "null"], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1182)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:27:40 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "null"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1183)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:29:01 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "null"], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1182)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:29:15 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Qtl8_wy4hMCrViSYvHQZFg\":{\"token\":\"$2a$10$4WM00hQbbfoo9MAlenW76OdKqYECEQoeOzAUTp0B7q9NEbDrcKMwC\",\"expiry\":1638336555}}"], ["updated_at", "2021-11-17 05:29:15.966420"], ["id", 4]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Qtl8_wy4hMCrViSYvHQZFg\":{\"token\":\"$2a$10$F.AH.97zMkN7N9N6XflvZ.uYac6.BxsKGEAX/jlc5EVPl.Y/cB3ya\",\"expiry\":1638336556,\"last_token\":\"$2a$10$4WM00hQbbfoo9MAlenW76OdKqYECEQoeOzAUTp0B7q9NEbDrcKMwC\",\"updated_at\":\"2021-11-17T05:29:15Z\"}}"], ["updated_at", "2021-11-17 05:29:16.027630"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 331ms (Views: 0.1ms | ActiveRecord: 4.0ms | Allocations: 12648)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:29:16 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", nil], ["updated_at", "2021-11-17 05:29:16.808202"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 63ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 5080)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:29:45 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"RMijm9VXGZxoUNe6SLJN1w\":{\"token\":\"$2a$10$ssEzLkRRMxRE76L9gDZu7.V/iEJLTbEVJbZ5no4KOWmdhOdYCqnO.\",\"expiry\":1638336585}}"], ["updated_at", "2021-11-17 05:29:45.624514"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"RMijm9VXGZxoUNe6SLJN1w\":{\"token\":\"$2a$10$/YcQqXl133Tmsr.xPCYO0.DHPgGjRl67ozHVWvDyyuiKWNG3IIJA2\",\"expiry\":1638336585,\"last_token\":\"$2a$10$ssEzLkRRMxRE76L9gDZu7.V/iEJLTbEVJbZ5no4KOWmdhOdYCqnO.\",\"updated_at\":\"2021-11-17T05:29:45Z\"}}"], ["updated_at", "2021-11-17 05:29:45.691565"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 363ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 12648)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:29:46 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", nil], ["updated_at", "2021-11-17 05:29:46.884070"], ["id", 4]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 64ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 5101)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:33:13 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"aUhTApMj3jONdgHorRbOdQ\":{\"token\":\"$2a$10$SGIIsusXMot4Dj8teT3CeOKCFbh59TOi25ep/bV/idBMKiDrFWwkK\",\"expiry\":1638336794}}"], ["updated_at", "2021-11-17 05:33:14.249748"], ["id", 4]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"aUhTApMj3jONdgHorRbOdQ\":{\"token\":\"$2a$10$I2vzjx9Cvi02Gyt9Hc/5yeP5To4CDD0AncdkLoCSab.lZbfp5gbJy\",\"expiry\":1638336794,\"last_token\":\"$2a$10$SGIIsusXMot4Dj8teT3CeOKCFbh59TOi25ep/bV/idBMKiDrFWwkK\",\"updated_at\":\"2021-11-17T05:33:14Z\"}}"], ["updated_at", "2021-11-17 05:33:14.323200"], ["id", 4]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 351ms (Views: 0.3ms | ActiveRecord: 11.9ms | Allocations: 19398)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:33:16 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", nil], ["updated_at", "2021-11-17 05:33:16.179731"], ["id", 4]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 70ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 5478)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:36:46 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$qdPydoRBf36UAZ91WnwZWuHDXvxFEJAHaEMyXqT/zindyAgnbXFg6\",\"expiry\":1638337006}}"], ["updated_at", "2021-11-17 05:36:46.840291"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"expiry\":1638337006,\"last_token\":\"$2a$10$qdPydoRBf36UAZ91WnwZWuHDXvxFEJAHaEMyXqT/zindyAgnbXFg6\",\"updated_at\":\"2021-11-17T05:36:46Z\"}}"], ["updated_at", "2021-11-17 05:36:46.909624"], ["id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 367ms (Views: 0.1ms | ActiveRecord: 4.3ms | Allocations: 12672)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:39:44 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"}}"], ["updated_at", "2021-11-17 05:39:45.018884"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 147ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 8513)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:40:24 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 78ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 7458)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:40:29 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 56ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1294)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:40:30 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 60ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1299)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:40:32 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 58ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1288)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:40:51 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 84ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 13268)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:40:52 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 404 Not Found in 60ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1632)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:42:38 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 57ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1305)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:42:53 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 56ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1305)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:43:52 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 60ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1306)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:45:38 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"2ME-hpl1wSIEtd0fnzcL0Q\":{\"token\":\"$2a$10$pO9IJ5boeLNPEC4LPZyrkugSRterdWkeGHwQbdBcr/JR1YFerPNL2\",\"expiry\":1638337539}}"], ["updated_at", "2021-11-17 05:45:39.123354"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"2ME-hpl1wSIEtd0fnzcL0Q\":{\"token\":\"$2a$10$hFkpyII2.JblbWZK7HGz9O4Q3B5DKGOTTDZx5G0enuPu7fCWskQ0O\",\"expiry\":1638337539,\"last_token\":\"$2a$10$pO9IJ5boeLNPEC4LPZyrkugSRterdWkeGHwQbdBcr/JR1YFerPNL2\",\"updated_at\":\"2021-11-17T05:45:39Z\"}}"], ["updated_at", "2021-11-17 05:45:39.199639"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 368ms (Views: 0.1ms | ActiveRecord: 5.6ms | Allocations: 15093)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:45:39 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 58ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 7002)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 14:45:40 +0900
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"}}"], ["updated_at", "2021-11-17 05:45:40.954760"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 5146)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-17 14:49:51 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"wsEgTJxAEwlaGylZey5Qxw\":{\"token\":\"$2a$10$kSe4IyJvseVCgDR88k3tkelIPIYL252pH5.n6yJHDywAV9ijAb0fy\",\"expiry\":1638337791}}"], ["updated_at", "2021-11-17 05:49:51.514189"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"wsEgTJxAEwlaGylZey5Qxw\":{\"token\":\"$2a$10$2kZCER8ru33GfqFD/3kdzOz3xozJ0NUlUHZKbcxaTDI9khk.i.T06\",\"expiry\":1638337791,\"last_token\":\"$2a$10$kSe4IyJvseVCgDR88k3tkelIPIYL252pH5.n6yJHDywAV9ijAb0fy\",\"updated_at\":\"2021-11-17T05:49:51Z\"}}"], ["updated_at", "2021-11-17 05:49:51.573949"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 327ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 12796)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:49:51 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 58ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 6977)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:49:54 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"wsEgTJxAEwlaGylZey5Qxw\":{\"token\":\"$2a$10$2kZCER8ru33GfqFD/3kdzOz3xozJ0NUlUHZKbcxaTDI9khk.i.T06\",\"expiry\":1638337791,\"last_token\":\"$2a$10$kSe4IyJvseVCgDR88k3tkelIPIYL252pH5.n6yJHDywAV9ijAb0fy\",\"updated_at\":\"2021-11-17T05:49:54Z\"}}"], ["updated_at", "2021-11-17 05:49:54.621625"], ["id", 4]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 8357)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-17 14:49:54 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 6954)
+
+
+Started DELETE "/auth/sign_out" for ::1 at 2021-11-17 21:03:50 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by DeviseTokenAuth::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"}}"], ["updated_at", "2021-11-17 12:03:50.697167"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 36ms (Views: 1.6ms | ActiveRecord: 3.5ms | Allocations: 5169)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-19 21:42:38 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$l3Xo7I6vnZjErDRUXB0yje0FTnaXntOK.0OziOuqL9A25vC1RrVty\",\"expiry\":1638535359}}"], ["updated_at", "2021-11-19 12:42:39.031737"], ["id", 4]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"expiry\":1638535359,\"last_token\":\"$2a$10$l3Xo7I6vnZjErDRUXB0yje0FTnaXntOK.0OziOuqL9A25vC1RrVty\",\"updated_at\":\"2021-11-19T12:42:39Z\"}}"], ["updated_at", "2021-11-19 12:42:39.211529"], ["id", 4]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 583ms (Views: 0.6ms | ActiveRecord: 6.2ms | Allocations: 12892)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:42:39 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 95ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 7502)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:42:39 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 142ms (Views: 1.4ms | ActiveRecord: 8.4ms | Allocations: 24795)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:45:48 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"}}"], ["updated_at", "2021-11-19 12:45:48.078151"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 73ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 8429)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:45:48 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 138ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 12414)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:50:22 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 57ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1297)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:50:22 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 53ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1286)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:50:22 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 52ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1286)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:50:32 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 57ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1297)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-19 21:50:51 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$UyxQ52nMMcKTjEKiWBDhaOLlKTDOuqR.QLkEdq9EFeB2Hx.E5ry5e\",\"expiry\":1638535852}}"], ["updated_at", "2021-11-19 12:50:52.201355"], ["id", 4]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"expiry\":1638535852,\"last_token\":\"$2a$10$UyxQ52nMMcKTjEKiWBDhaOLlKTDOuqR.QLkEdq9EFeB2Hx.E5ry5e\",\"updated_at\":\"2021-11-19T12:50:52Z\"}}"], ["updated_at", "2021-11-19 12:50:52.261229"], ["id", 4]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 327ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 12928)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:50:52 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 60ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 7039)
+
+
+Started GET "/messages" for ::1 at 2021-11-19 21:50:52 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 12390)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:55:48 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:48Z\"}}"], ["updated_at", "2021-11-19 12:55:48.678236"], ["id", 4]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 141ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 15095)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 21:55:48 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 21:55:49 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 21:55:49 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:49Z\"}}"], ["updated_at", "2021-11-19 12:55:49.564488"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 153ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 23579)
+
+
+RoomChannel#receive({"message"=>"a", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "a"], ["created_at", "2021-11-19 12:55:52.409889"], ["updated_at", "2021-11-19 12:55:52.409889"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"a", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:55:52 UTC +00:00}
+RoomChannel transmitting {"message"=>"a", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:55:52.409Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:55:52 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"}}"], ["updated_at", "2021-11-19 12:55:52.535821"], ["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 121ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 17690)
+
+
+RoomChannel#receive({"message"=>"こんにちは今日の夜ご飯は牛タンでした。美味しかったです！", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "こんにちは今日の夜ご飯は牛タンでした。美味しかったです！"], ["created_at", "2021-11-19 12:56:09.515375"], ["updated_at", "2021-11-19 12:56:09.515375"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"こんにちは今日の夜ご飯は牛タンでした。美味しかったです！", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:09 UTC +00:00}
+RoomChannel transmitting {"message"=>"こんにちは今日の夜ご飯は牛タンでした。美味しかったです！", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:09.515Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:09 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 86ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 7458)
+
+
+RoomChannel#receive({"message"=>"あ", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "あ"], ["created_at", "2021-11-19 12:56:15.819927"], ["updated_at", "2021-11-19 12:56:15.819927"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"あ", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:15 UTC +00:00}
+RoomChannel transmitting {"message"=>"あ", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:15.819Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:15 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 55ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1296)
+
+
+RoomChannel#receive({"message"=>"a", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "a"], ["created_at", "2021-11-19 12:56:20.264733"], ["updated_at", "2021-11-19 12:56:20.264733"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"a", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:20 UTC +00:00}
+RoomChannel transmitting {"message"=>"a", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:20.264Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:20 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 56ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1657)
+
+
+RoomChannel#receive({"message"=>"", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"", :name=>"センゴクカスミ", :created_at=>nil}
+RoomChannel transmitting {"message"=>"", "name"=>"センゴクカスミ", "created_at"=>nil} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:20 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 57ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1295)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 21:56:23 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:56:23 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 60ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1311)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-19 21:56:38 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$GTJG9iPJ3Mnbt0oSMy7wounImuaGCw45OG.EDQo0dJBy/35rBVau6\",\"expiry\":1638536198}}"], ["updated_at", "2021-11-19 12:56:38.303163"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"expiry\":1638536198,\"last_token\":\"$2a$10$GTJG9iPJ3Mnbt0oSMy7wounImuaGCw45OG.EDQo0dJBy/35rBVau6\",\"updated_at\":\"2021-11-19T12:56:38Z\"}}"], ["updated_at", "2021-11-19 12:56:38.363469"], ["id", 4]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 327ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 13511)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:56:38 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 57ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 7101)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 21:56:38 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 21:56:38 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 21:56:38 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 34ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 18887)
+
+
+RoomChannel#receive({"message"=>"d", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "d"], ["created_at", "2021-11-19 12:56:40.812206"], ["updated_at", "2021-11-19 12:56:40.812206"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"d", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:40 UTC +00:00}
+RoomChannel transmitting {"message"=>"d", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:40.812Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:40 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"expiry\":1638536198,\"last_token\":\"$2a$10$GTJG9iPJ3Mnbt0oSMy7wounImuaGCw45OG.EDQo0dJBy/35rBVau6\",\"updated_at\":\"2021-11-19T12:56:40Z\"}}"], ["updated_at", "2021-11-19 12:56:40.842286"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 2.4ms | Allocations: 23357)
+
+
+RoomChannel#receive({"message"=>"t", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "t"], ["created_at", "2021-11-19 12:56:47.278750"], ["updated_at", "2021-11-19 12:56:47.278750"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"t", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:47 UTC +00:00}
+RoomChannel transmitting {"message"=>"t", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:47.278Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:47 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"}}"], ["updated_at", "2021-11-19 12:56:47.364550"], ["id", 4]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 80ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 23127)
+
+
+RoomChannel#receive({"message"=>"ああああ", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["content", "ああああ"], ["created_at", "2021-11-19 12:56:52.530719"], ["updated_at", "2021-11-19 12:56:52.530719"]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"ああああ", :name=>"センゴクカスミ", :created_at=>Fri, 19 Nov 2021 12:56:52 UTC +00:00}
+RoomChannel transmitting {"message"=>"ああああ", "name"=>"センゴクカスミ", "created_at"=>"2021-11-19T12:56:52.530Z"} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:56:52 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 57ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1306)
+
+
+RoomChannel#receive({"message"=>"", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"", :name=>"センゴクカスミ", :created_at=>nil}
+RoomChannel transmitting {"message"=>"", "name"=>"センゴクカスミ", "created_at"=>nil} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:57:14 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 58ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1305)
+
+
+RoomChannel#receive({"message"=>"", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"", :name=>"センゴクカスミ", :created_at=>nil}
+RoomChannel transmitting {"message"=>"", "name"=>"センゴクカスミ", "created_at"=>nil} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:57:14 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 59ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1305)
+
+
+RoomChannel#receive({"message"=>"", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"", :name=>"センゴクカスミ", :created_at=>nil}
+RoomChannel transmitting {"message"=>"", "name"=>"センゴクカスミ", "created_at"=>nil} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:57:14 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 59ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1308)
+
+
+RoomChannel#receive({"message"=>"", "email"=>"kasumiuchan827827827@gmail.com"})
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:11:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/room_channel.rb:13:in `receive'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/channels/room_channel.rb:13:in `receive'
+[ActionCable] Broadcasting to room_channel: {:message=>"", :name=>"センゴクカスミ", :created_at=>nil}
+RoomChannel transmitting {"message"=>"", "name"=>"センゴクカスミ", "created_at"=>nil} (via streamed from room_channel)
+Started GET "/messages" for ::1 at 2021-11-19 21:57:14 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 401 Unauthorized in 58ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1305)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 21:57:17 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:57:17 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 56ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1315)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-19 21:57:29 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"expiry\":1638536249}}"], ["updated_at", "2021-11-19 12:57:29.847809"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:29Z\"}}"], ["updated_at", "2021-11-19 12:57:29.907556"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 324ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 13199)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 21:57:29 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 58ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 7163)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 21:57:30 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 21:57:30 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 21:57:30 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"}}"], ["updated_at", "2021-11-19 12:57:30.069373"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 39ms (Views: 0.7ms | ActiveRecord: 3.7ms | Allocations: 25265)
+
+
+Started POST "/auth/sign_in" for ::1 at 2021-11-19 22:23:08 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"kasumiuchan827827827@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? AND "users"."provider" = ? LIMIT ?[0m  [["email", "kasumiuchan827827827@gmail.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$hV20KBPDNwrRawu69T7kY.7GAGEpqo0rHBUCPakOsJPb4JQ7X1.TC\",\"expiry\":1638537788}}"], ["updated_at", "2021-11-19 13:23:08.916009"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"expiry\":1638537788,\"last_token\":\"$2a$10$hV20KBPDNwrRawu69T7kY.7GAGEpqo0rHBUCPakOsJPb4JQ7X1.TC\",\"updated_at\":\"2021-11-19T13:23:08Z\"}}"], ["updated_at", "2021-11-19 13:23:08.988880"], ["id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 353ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 20085)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:09 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"expiry\":1638537788,\"last_token\":\"$2a$10$hV20KBPDNwrRawu69T7kY.7GAGEpqo0rHBUCPakOsJPb4JQ7X1.TC\",\"updated_at\":\"2021-11-19T13:23:09Z\"}}"], ["updated_at", "2021-11-19 13:23:09.068512"], ["id", 4]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 8914)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:09 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:09 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:09 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 48ms (Views: 0.5ms | ActiveRecord: 3.8ms | Allocations: 33943)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:21 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:21 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:21Z\"}}"], ["updated_at", "2021-11-19 13:23:21.546085"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 68ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 8741)
+
+
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:21 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 112ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 7329)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:21 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:21 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:21 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 125ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 22719)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:23 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:23 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:23Z\"}}"], ["updated_at", "2021-11-19 13:23:23.274551"], ["id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 117ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 8748)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:23 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:23 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:23 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 130ms (Views: 0.9ms | ActiveRecord: 1.6ms | Allocations: 25031)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:23 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:23 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:24Z\"}}"], ["updated_at", "2021-11-19 13:23:24.002170"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 117ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 8749)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:24 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:24 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:24 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 132ms (Views: 0.7ms | ActiveRecord: 1.9ms | Allocations: 23001)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:24 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:24 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 114ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 7311)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:24 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:24 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:24 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 127ms (Views: 0.5ms | ActiveRecord: 1.6ms | Allocations: 22720)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:24 +0900
+RoomChannel stopped streaming from room_channel
+Started GET "/auth/validate_token" for ::1 at 2021-11-19 22:23:25 +0900
+Processing by DeviseTokenAuth::TokenValidationsController#validate_token as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:25Z\"}}"], ["updated_at", "2021-11-19 13:23:25.173281"], ["id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 123ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 8727)
+
+
+Started GET "/cable" for ::1 at 2021-11-19 22:23:25 +0900
+Started GET "/cable/" [WebSocket] for ::1 at 2021-11-19 22:23:25 +0900
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+RoomChannel is streaming from room_channel
+Started GET "/messages" for ::1 at 2021-11-19 22:23:25 +0900
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:5:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 2]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:13:in `block (2 levels) in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 3]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 4]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 5]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 6]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 7]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 8]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 9]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:8:in `block in index'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."message_id" = ?[0m  [["message_id", 10]]
+  ↳ app/controllers/messages_controller.rb:13:in `map'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 133ms (Views: 0.9ms | ActiveRecord: 1.6ms | Allocations: 22842)
+
+
+Started POST "/messages/2/likes" for ::1 at 2021-11-19 22:23:26 +0900
+Processing by LikesController#create as HTML
+  Parameters: {"id"=>"2", "like"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Create (1.6ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "message_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["message_id", 2], ["created_at", "2021-11-19 13:23:27.048204"], ["updated_at", "2021-11-19 13:23:27.048204"]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:27Z\"}}"], ["updated_at", "2021-11-19 13:23:27.059587"], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 129ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 13670)
+
+
+Started POST "/messages/3/likes" for ::1 at 2021-11-19 22:23:27 +0900
+Processing by LikesController#create as HTML
+  Parameters: {"id"=>"3", "like"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "kasumiuchan827827827@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mMessage Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "message_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["message_id", 3], ["created_at", "2021-11-19 13:23:28.018712"], ["updated_at", "2021-11-19 13:23:28.018712"]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ? [0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"LAR6EdUMh92yJPdIyz2fBg\":{\"token\":\"$2a$10$ccdZEMX1NQ5Mi.3/4FKoaOgSxauKA96ObEBnQ0rRtThV6v/Jg2SyW\",\"expiry\":1638337185,\"last_token\":\"$2a$10$Cz4MBYgOhKn6w7MtQP/apO/V0wuohRhT456tSPp51cwQDkkTWgx.e\",\"updated_at\":\"2021-11-17T05:39:44Z\"},\"-fx7907zuo6eS56WJG1k2A\":{\"token\":\"$2a$10$RPcrSFLjFDRud0YQfHyTDOMismoQRjml1y1ixsvk4FU29RP7o/9KW\",\"expiry\":1638535548,\"last_token\":\"$2a$10$q9PK.B0Pl8LI8hjv9qUx3ukQ0Oss12lhFm4EtdfZUhYsNDItJSVJS\",\"updated_at\":\"2021-11-19T12:45:48Z\"},\"FqiwpOKQ6yIJJDCGPBE1Yw\":{\"token\":\"$2a$10$zVPyR0EkbX3Vnw7AC4Awxez.samVY9sMSe2LYHuaIbV3kbFYymx/y\",\"expiry\":1638536148,\"last_token\":\"$2a$10$YwymvJpUr1yWVAtv0Wa5WeTg/F5TrEp4FrRaPj2/MIDaIroZ8NaFS\",\"updated_at\":\"2021-11-19T12:55:52Z\"},\"IiTONRnjr-4K2UE7k488cw\":{\"token\":\"$2a$10$kU77TyMf64hoLczMWGyjNuwyQn.HD3NOV123RWHRe4wphm399h3FC\",\"expiry\":1638536207,\"last_token\":\"$2a$10$gDmEa9UxNzirJlLRxIbyAuvklMgCY.1DvDhXlGoCN3almnTA.5Pfe\",\"updated_at\":\"2021-11-19T12:56:47Z\"},\"EvWQo9X1Qq4aO-PsyOaF6w\":{\"token\":\"$2a$10$H1A6ykrL/QVBHESfQnv1sO2ADXa5cfcs9hpZbmW/3G1wwMGszEDtu\",\"expiry\":1638536249,\"last_token\":\"$2a$10$h7OiCPDJ081uafBqWr.cquBQ6pMpq6hxm8bKFCrWxKfBQVTrJRhUe\",\"updated_at\":\"2021-11-19T12:57:30Z\"},\"uJQgFA_XZjH6r0-ZKKdt6g\":{\"token\":\"$2a$10$04CwpoYHkXJkY770WOgD2uDJT.dU/OW9.6xpCiDKxlmSSvqc70UXe\",\"expiry\":1638537801,\"last_token\":\"$2a$10$jG8fO9kNpGwFf8nU7mkeU.QO2JCZ9o.VYGNW9sW4hv9M/dJ1e41IW\",\"updated_at\":\"2021-11-19T13:23:28Z\"}}"], ["updated_at", "2021-11-19 13:23:28.025473"], ["id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 123ms (Views: 0.1ms | ActiveRecord: 3.0ms | Allocations: 12924)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2021-11-19 22:24:45 +0900
+RoomChannel stopped streaming from room_channel
