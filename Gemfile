@@ -28,7 +28,7 @@ gem 'devise', '~> 4.8'
 gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
 
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -44,5 +44,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.20.0'
 end
