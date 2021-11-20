@@ -25,3 +25,5 @@ pnpm-debug.log*
 storage/
 tmp/
 vendor/
+
+BUNDLE_WITHOUT: "production"
